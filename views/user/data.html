@@ -1,0 +1,19 @@
+    % for item in items:
+    <tr>
+        <td>{{item['displayName']}}</td>
+        <td>{{item['userPrincipalName']}}</td>
+        <td><i class="fa {{item['status_icon']}}"></i></td>
+        <td>
+            % for sku in item['licenses']:
+            <span class="chip">{{sku}}</span>
+            % end
+        </td>
+        <td>
+            % if len(item['assignedLicenses']) == 0:
+            <a data-href="/user/sku?id={{_id}}&user_id={{item['id']}}" class="tooltip ajax" data-tooltip="分配订阅"><i class="fa fa-retweet"></i></a>
+            % end
+            <a class="tooltip" data-tooltip="OneDrive Files" href="/file/list?id={{_id}}&user_id={{item['id']}}"><i class="fa fa-folder"></i></a>
+            <a class="tooltip ajax" data-tooltip="删除" data-href="/user/delete?id={{_id}}&user_id={{item['id']}}"><i class="fa fa-trash"></i></a>
+        </td>
+    </tr>
+    % end

@@ -1,0 +1,49 @@
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.9/dist/spectre.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/atcaoyufei/oneadmin@v1/static/main.css">
+<title>OneAdmin Install</title>
+<body>
+<header class="navbar header">
+  <section class="navbar-section">
+    <a href="/" class="navbar-brand">OneAdmin</a>
+  </section>
+</header>
+<div class="main">
+    <div class="container grid-sm">
+        <form method="post" action="/install" id="install-form">
+            <div class="form-group">
+                <select name="one_type" class="form-select">
+                    <option value="A1">A1</option>
+                    <option value="E5">E5</option>
+                    <option value="A3">A3</option>
+                    <option value="E3">E3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" name="name" value="" placeholder="org name">
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" name="client_id" value="" placeholder="client_id">
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" name="client_secret" value="" placeholder="client_secret">
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" name="tenant_id" value="" placeholder="租户ID">
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" name="object_id" value="" placeholder="对象ID">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-danger btn-lg">Install</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

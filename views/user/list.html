@@ -1,0 +1,55 @@
+<div class="sku-panel columns">
+    % for item in subscribed:
+    <div class="column col">
+        <div class="sku-item">
+            <h1>{{item['sku_name']}}</h1>
+            <p>{{item['units']}}</p>
+        </div>
+    </div>
+    % end
+</div>
+
+% include('user/tab.html', request=request)
+
+<div class="columns toolbar">
+    <div class="column col-2">
+        <a data-href="/user/add?id={{_id}}" class="btn btn-lg ajax-modal">添加用户</a>
+    </div>
+    <div class="column col-6 col-ml-auto">
+        <form action="/user/list" method="get">
+            <input type="hidden" name="id" value="{{_id}}">
+            <div class="input-group">
+                <select class="form-select" name="filter">
+                    <option value="0">----</option>
+                    % for value, name in filter_list.items():
+                    % if int(request.query.get('filter', 0)) == value:
+                    <option value="{{value}}" selected="selected">{{name}}</option>
+                    % else:
+                    <option value="{{value}}">{{name}}</option>
+                    %end
+                    % end
+                </select>
+                <input value="{{request.query.get('wd', '')}}" class="form-input input-lg" type="text" name="wd" placeholder="用户名">
+                <button type="submit" class="btn btn-lg input-group-btn">搜索</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<table class="table" data-page="{{page_url}}">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>状态</th>
+        <th>订阅</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    % include('user/data.html', items=items)
+    </tbody>
+</table>
+
+<div class="loading loading-lg text-center d-none"></div>
+

@@ -1,0 +1,6 @@
+bottle
+pymongo
+dnspython
+gunicorn
+python-dotenv
+requests

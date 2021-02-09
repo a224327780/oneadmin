@@ -1,0 +1,26 @@
+% include('user/tab.html', request=request)
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>URL</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        % for item in items['value']:
+        % web_url = item['webUrl']
+        % if 'contentTypeHub' in web_url or ('sites/' not in web_url and not web_url.endswith('com')):
+            % continue
+        % end
+        <tr>
+            <td>{{item['displayName']}}</td>
+            <td>{{web_url}}</td>
+            <td>
+                <a class="tooltip" data-tooltip="Files" href="/file/list?id={{_id}}&site_id={{item['id']}}"><svg viewBox="0 0 48 48" class="svg-icon"><path class="svg-folder-icon-bg" d="M40 12H22l-4-4H8c-2.2 0-4 1.8-4 4v8h40v-4c0-2.2-1.8-4-4-4z"></path><path class="svg-folder-icon-fg" d="M40 12H8c-2.2 0-4 1.8-4 4v20c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16c0-2.2-1.8-4-4-4z"></path></svg></a>
+            </td>
+        </tr>
+        % end
+    </tbody>
+</table>

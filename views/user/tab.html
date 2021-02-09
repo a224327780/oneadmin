@@ -1,0 +1,16 @@
+<ul class="tab tab-block">
+    % if 'list' in request.path:
+    <li class="tab-item active">
+    % else:
+    <li class="tab-item">
+    % end
+        <a href="/user/list?id={{_id}}">用户</a>
+    </li>
+    % if 'site' in request.path:
+    <li class="tab-item active">
+    % else:
+    <li class="tab-item">
+    % end
+        <a href="/user/site?id={{_id}}">站点</a>
+    </li>
+</ul>
