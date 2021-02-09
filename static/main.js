@@ -53,6 +53,7 @@ $(function () {
             error: function (jqXHR, statusText, error) {
                 let data = JSON.parse(jqXHR.responseText)
                 App.tip(data['msg'], 5000);
+                $this.removeClass('loading')
             },
             success: function (result) {
                 window.location.reload();

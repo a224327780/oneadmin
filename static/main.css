@@ -3,7 +3,7 @@
     font-family: 'Satisfy';
     font-style: normal;
     font-weight: 400;
-    src: local('Satisfy Regular'), local('Satisfy-Regular'), url(https://cdn.jsdelivr.net/gh/atcaoyufei/oneadmin@v1/static/fonts/satisfy.woff2) format('woff2');
+    src: local('Satisfy Regular'), local('Satisfy-Regular'), url(/static/fonts/satisfy.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -239,7 +239,7 @@ a:visited {
 }
 
 .table tbody tr:hover {
-    background: rgba(255, 233, 179, 0.39);
+    background: #ECEFF1;
 }
 
 .card {
@@ -300,6 +300,16 @@ a:visited {
     color: #fff;
     background: #2897a7;
     border-color: #2897a7;
+}
+
+.btn.btn-dark {
+    background: #55617e;
+    border-color: #55617e;
+}
+
+.btn.btn-danger {
+    background: #ec6068;
+    border-color: #ec6068;
 }
 
 .btn.btn-lg, .form-input.input-lg {
@@ -383,28 +393,25 @@ a:visited {
     fill: #8cbd61;
 }
 
+.svg-icon-delete {
+    fill: #ca4d50;
+}
+
 .svg-folder-icon-bg {
     fill: #FFA000;
 }
 
-.fa-folder {
-    color: #f7af09;
-    font-size: 1.2rem;
+.svg-check-icon-fg {
+    fill: #32b643;
 }
 
-.fa-trash {
-    font-size: 1.3rem;
-    color: #e85600;
-}
-
-.fa-retweet {
-    font-size: 1.3rem;
+.svg-cross-icon-fg {
+    fill: #e85600;
 }
 
 .sku-panel {
     margin-bottom: 2rem;
 }
-
 
 .sku-panel .sku-item {
     text-align: center;

@@ -2,7 +2,15 @@
     <tr>
         <td>{{item['displayName']}}</td>
         <td>{{item['userPrincipalName']}}</td>
-        <td><i class="fa {{item['status_icon']}}"></i></td>
+        % if item['accountEnabled']:
+        <td>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path class="svg-check-icon-fg" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+        </td>
+        % else:
+        <td>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path class="svg-cross-icon-fg" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </td>
+        % end
         <td>
             % for sku in item['licenses']:
             <span class="chip">{{sku}}</span>
@@ -10,10 +18,16 @@
         </td>
         <td>
             % if len(item['assignedLicenses']) == 0:
-            <a data-href="/user/sku?id={{_id}}&user_id={{item['id']}}" class="tooltip ajax" data-tooltip="分配订阅"><i class="fa fa-retweet"></i></a>
+            <a data-href="/user/sku?id={{_id}}&user_id={{item['id']}}" class="tooltip ajax" data-tooltip="分配订阅">
+                <svg viewBox="0 0 24 24" class="svg-icon svg-icon-image"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path></svg>
+            </a>
             % end
-            <a class="tooltip" data-tooltip="OneDrive Files" href="/file/list?id={{_id}}&user_id={{item['id']}}"><i class="fa fa-folder"></i></a>
-            <a class="tooltip ajax" data-tooltip="删除" data-href="/user/delete?id={{_id}}&user_id={{item['id']}}"><i class="fa fa-trash"></i></a>
+            <a class="tooltip" data-tooltip="OneDrive Files" href="/file/list?id={{_id}}&user_id={{item['id']}}">
+                <svg viewBox="0 0 48 48" class="svg-icon"><path class="svg-folder-icon-bg" d="M40 12H22l-4-4H8c-2.2 0-4 1.8-4 4v8h40v-4c0-2.2-1.8-4-4-4z"></path><path class="svg-folder-icon-fg" d="M40 12H8c-2.2 0-4 1.8-4 4v20c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16c0-2.2-1.8-4-4-4z"></path></svg>
+            </a>
+            <a class="tooltip ajax" data-tooltip="删除" data-href="/user/delete?id={{_id}}&user_id={{item['id']}}">
+                <svg viewBox="0 0 24 24" class="svg-icon svg-icon-delete"><path d="M16.2,17H14.2L12,13.2L9.8,17H7.8L11,12L7.8,7H9.8L12,10.8L14.2,7H16.2L13,12M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z"></path></svg>
+            </a>
         </td>
     </tr>
     % end

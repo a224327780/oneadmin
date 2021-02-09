@@ -35,9 +35,6 @@ def user_list(one_drive: OneDrive):
 
     items = []
     for item in data['value']:
-        status = item['accountEnabled']
-        item['status_icon'] = 'fa-times text-error' if not status else 'fa-check text-success'
-
         if _filter == 4 and len(item['assignedLicenses']) <= 0:
             continue
 

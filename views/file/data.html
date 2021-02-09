@@ -1,0 +1,18 @@
+% for item in items:
+<tr>
+    <td class="text-left">
+        % if item.get('folder'):
+        <svg viewBox="0 0 48 48" class="svg-icon"><path class="svg-folder-icon-bg" d="M40 12H22l-4-4H8c-2.2 0-4 1.8-4 4v8h40v-4c0-2.2-1.8-4-4-4z"></path><path class="svg-folder-icon-fg" d="M40 12H8c-2.2 0-4 1.8-4 4v20c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16c0-2.2-1.8-4-4-4z"></path></svg>
+        % else:
+            % if item['name'].split('.')[-1] in ['jpg', 'png']:
+            <svg viewBox="0 0 24 24" class="svg-icon svg-icon-image"><path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z"></path></svg>
+            % else:
+            <svg viewBox="0 0 24 24" class="svg-icon svg-icon-text"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path></svg>
+            % end
+        % end
+        <a href="{{item['url']}}">{{item['name']}}</a>
+    </td>
+    <td>{{item['lastModifiedDateTime']}}</td>
+    <td>{{item['size']}}</td>
+</tr>
+% end

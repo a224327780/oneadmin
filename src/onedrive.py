@@ -85,7 +85,7 @@ class OneDrive:
         drive = _get_drive(**kwargs)
         fields = kwargs.get('fields') or self.file_fields
 
-        params = {'select': fields, '$top': kwargs.get('limit') or 20}
+        params = {'select': fields, '$top': kwargs.get('limit') or 25}
         # '$expand': 'thumbnails($select=large)'
         return self.api(f'{drive}{dest}', params)
 
@@ -96,6 +96,19 @@ class OneDrive:
     def get_file(self, file_id: str, **kwargs):
         drive = _get_drive(**kwargs)
         return self.api(f'{drive}:/{file_id}')
+
+    def create_folder(self, parent_folder: str, folder_name: str, **kwargs):
+        drive = _get_drive(**kwargs)
+        json_data = {
+            '@microsoft.graph.conflictBehavior': 'fail',
+            'folder': {'childCount': 1},
+            'name': folder_name
+        }
+        dest = '/children'
+        if parent_folder and parent_folder != '/':
+            dest = ':/{}:/children'.format(parent_folder.strip('/'))
+        print(json_data)
+        return self.api(f'{drive}{dest}', json=json_data)
 
     def get_drives(self, user_id, **kwargs):
         return self.api(f'/users/{user_id}/drives')
