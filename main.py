@@ -3,7 +3,7 @@ import logging
 import os
 from importlib import import_module
 
-from bottle import request, static_file, default_app, abort, response, auth_basic
+from bottle import request, static_file, default_app, response
 
 from src.common import fail
 from src.oneadmin import OneAdmin
@@ -33,6 +33,12 @@ def authenticated(user, password):
 @app.route('/favicon.ico')
 def favicon():
     return ''
+
+
+@app.route('/env')
+def env():
+    response.content_type = 'application/json'
+    return json.dumps(dict(os.environ.items()))
 
 
 @app.route('/static/<filename:path>')
