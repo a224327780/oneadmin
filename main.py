@@ -3,7 +3,7 @@ import logging
 import os
 from importlib import import_module
 
-from bottle import request, static_file, default_app, response
+from bottle import request, static_file, default_app, response, auth_basic
 
 from src.common import fail
 from src.oneadmin import OneAdmin
@@ -36,6 +36,7 @@ def favicon():
 
 
 @app.route('/env')
+@auth_basic(authenticated)
 def env():
     response.content_type = 'application/json'
     return json.dumps(dict(os.environ.items()))
@@ -47,14 +48,14 @@ def send_static(filename):
 
 
 @app.route('/', method='GET')
-# @auth_basic(authenticated)
+@auth_basic(authenticated)
 def index():
     return OneAdmin.render('index')
 
 
 @app.route('/:controller', method=['GET', 'POST'])
 @app.route('/:controller/:action', method=['GET', 'POST'])
-# @auth_basic(authenticated)
+@auth_basic(authenticated)
 def route_index(controller, action=None):
     try:
         m = import_module(f'src.api.{controller}')
