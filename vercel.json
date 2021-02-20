@@ -5,11 +5,5 @@
       "src": "./main.py",
       "use": "@vercel/python"
     }
-  ],
-  "env": {
-    "AUTH_USERNAME": "@AUTH_USERNAME",
-    "AUTH_PASSWORD": "@AUTH_PASSWORD",
-    "DEBUG": "@DEBUG",
-    "MONGO_URI": "@MONGO_URI"
-  }
+  ]
 }
