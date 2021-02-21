@@ -25,7 +25,7 @@ class OneAdmin:
         if not cls.mongo_db:
             mongo_uri = os.environ.get('MONGO_URI')
             client = MongoClient(mongo_uri, connectTimeoutMS=5000, socketTimeoutMS=5000)
-            db = client.get_database('one_drive')
+            db = client.get_database('db0')
             cls.mongo_db = db['one_admin']
         return cls.mongo_db
 
