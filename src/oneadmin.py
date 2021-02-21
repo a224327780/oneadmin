@@ -26,7 +26,7 @@ class OneAdmin:
             mongo_uri = os.environ.get('MONGO_URI')
             client = MongoClient(mongo_uri, connectTimeoutMS=5000, socketTimeoutMS=5000)
             db = client.get_database('db0')
-            cls.mongo_db = db['one_admin']
+            cls.mongo_db = db['oneadmin']
         return cls.mongo_db
 
     @classmethod
