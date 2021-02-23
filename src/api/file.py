@@ -1,5 +1,5 @@
+import base64
 import logging
-import os
 from datetime import datetime
 from pathlib import Path
 
@@ -19,6 +19,7 @@ def file_list(one_drive: OneDrive):
 
     try:
         if page:
+            page = str(base64.b64decode(page))
             data = one_drive.api(page)
         else:
             data = one_drive.file_list(**params)

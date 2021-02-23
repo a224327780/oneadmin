@@ -93,7 +93,7 @@ $(function () {
             if (page_url && !window.load_url[page_url]) {
                 window.load_url[page_url] = page_url
                 $('.loading').removeClass('d-none')
-                $.get(window.page_url, {'page': page_url}, function (data) {
+                $.get(window.page_url, {'page': window.btoa(page_url)}, function (data) {
                     table.find('tbody').append(data['html'])
                     table.data('page', data['page_url'])
                     $('.loading').addClass('d-none')

