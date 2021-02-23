@@ -1,3 +1,4 @@
+import json
 import random
 
 from bottle import request
@@ -48,7 +49,6 @@ def user_list(one_drive: OneDrive):
             items.append(item)
 
     page_url = data.get('@odata.nextLink') or ''
-
     if page:
         html = OneAdmin.render('user/data', layout=False, items=items)
         return {'html': html, 'page_url': page_url}

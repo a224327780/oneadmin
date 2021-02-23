@@ -2,5 +2,5 @@ bottle
 pymongo
 dnspython
 gunicorn
-python-dotenv
+pymongo[srv]
 requests
