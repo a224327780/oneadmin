@@ -212,7 +212,7 @@ class OneDrive:
         params = {
             '$select': 'id,displayName,accountEnabled,userPrincipalName,assignedLicenses',
             '$top': kwargs.get('top', 30),
-            '$orderby': 'displayName desc',
+            # '$orderby': 'displayName desc',
         }
         if _filter:
             params['$filter'] = _filter
