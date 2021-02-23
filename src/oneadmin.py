@@ -68,6 +68,7 @@ class OneAdmin:
         _id = request.query.get('id')
         kwargs.setdefault('_id', _id)
         kwargs.setdefault('request', request)
+        kwargs.setdefault('static_version', os.environ.get('STATIC_VERSION', 0.1))
         content = template(f'{tpl_name}.html', **kwargs)
         if not layout:
             return content
