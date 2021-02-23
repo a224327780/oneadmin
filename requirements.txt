@@ -1,6 +1,4 @@
 bottle
 pymongo
-dnspython
-gunicorn
 pymongo[srv]
 requests
