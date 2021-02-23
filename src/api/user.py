@@ -50,9 +50,10 @@ def user_list(one_drive: OneDrive):
 
     page_url = data.get('@odata.nextLink') or ''
     if page:
-        html = OneAdmin.render('user/data', layout=False, items=items)
+        html = OneAdmin.render('user/data', layout=False, items=items, data=data)
         return {'html': html, 'page_url': page_url}
-    return OneAdmin.render('user/list', items=items, filter_list=filter_list, page_url=page_url, subscribed=subscribed)
+    return OneAdmin.render('user/list', data=data, items=items, filter_list=filter_list, page_url=page_url,
+                           subscribed=subscribed)
 
 
 def user_delete(one_drive: OneDrive):
