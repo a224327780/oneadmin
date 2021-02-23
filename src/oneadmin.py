@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from importlib import import_module
 
@@ -72,8 +73,12 @@ class OneAdmin:
         content = template(f'{tpl_name}.html', **kwargs)
         if not layout:
             return content
+
         drives = cls.get_drives()
-        return template('layout.html', content=content, drives=drives, **kwargs)
+        html = template('layout.html', content=content, drives=drives, **kwargs)
+        html = re.sub(r'(\r?\n)', '', html)
+        html = re.sub(r'>\s{2,}<', '><', html)
+        return html.strip()
 
     @classmethod
     def before_request(cls, one_drive: OneDrive):
