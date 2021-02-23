@@ -19,7 +19,7 @@ def file_list(one_drive: OneDrive):
 
     try:
         if page:
-            page = str(base64.b64decode(page))
+            page = base64.b64decode(page).decode('ascii')
             data = one_drive.api(page)
         else:
             data = one_drive.file_list(**params)
