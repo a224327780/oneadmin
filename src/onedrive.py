@@ -198,7 +198,7 @@ class OneDrive:
         subscribed_list = self.api('/subscribedSkus')
         result = []
         for i in subscribed_list['value']:
-            if i['skuId'] == '6470687e-a428-4b7a-bef2-8a291ad947c9':
+            if i['skuId'] in ['6470687e-a428-4b7a-bef2-8a291ad947c9', 'f30db892-07e9-47e9-837c-80727f46fd3d']:
                 continue
 
             if i['capabilityStatus'] == 'Enabled':
